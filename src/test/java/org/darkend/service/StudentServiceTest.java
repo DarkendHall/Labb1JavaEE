@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Persistence;
 import org.darkend.entity.Student;
+import org.darkend.exception.IllegalActionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,14 @@ class StudentServiceTest {
     @DisplayName("Get should throw EntityNotFoundException")
     void get() {
         assertThatThrownBy(() -> studentService.get(1)).isInstanceOf(EntityNotFoundException.class);
+    }
+
+    @Test
+    @DisplayName("Add with duplicate student")
+    void addDuplicate() {
+        studentService.add(student);
+
+        assertThatThrownBy(() -> studentService.add(student)).isInstanceOf(IllegalActionException.class);
     }
 
 }

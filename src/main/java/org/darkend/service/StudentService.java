@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
 import org.darkend.entity.Student;
+import org.darkend.exception.IllegalActionException;
 import org.eclipse.persistence.exceptions.DatabaseException;
 
 public class StudentService {
@@ -20,8 +21,13 @@ public class StudentService {
     }
 
     public Student add(Student student) {
-        entityManager.persist(student);
-        return student;
+        try {
+            get(student.getId());
+        } catch (EntityNotFoundException e) {
+            entityManager.persist(student);
+            return student;
+        }
+        throw new IllegalActionException("Student is already in the database");
     }
 
     public Student get(long Id) {
