@@ -2,8 +2,10 @@ package org.darkend.service;
 
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
 import org.darkend.entity.Student;
+import org.eclipse.persistence.exceptions.DatabaseException;
 
 public class StudentService {
 
@@ -23,6 +25,10 @@ public class StudentService {
     }
 
     public Student get(long Id) {
-        return entityManager.find(Student.class, Id);
+        try {
+            return entityManager.find(Student.class, Id);
+        } catch (DatabaseException e) {
+            throw new EntityNotFoundException("Couldn't find a student with that Id");
+        }
     }
 }

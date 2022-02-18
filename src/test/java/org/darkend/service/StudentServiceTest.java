@@ -2,6 +2,7 @@ package org.darkend.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Persistence;
 import org.darkend.entity.Student;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,6 +35,12 @@ class StudentServiceTest {
 
         assertThat(result).isEqualTo(student);
         assertThat(result1).isEqualTo(student);
+    }
+
+    @Test
+    @DisplayName("Get should throw EntityNotFoundException")
+    void get() {
+        assertThatThrownBy(() -> studentService.get(1)).isInstanceOf(EntityNotFoundException.class);
     }
 
 }
