@@ -65,4 +65,10 @@ class StudentServiceTest {
         assertThat(result).isEqualTo(result1);
     }
 
+    @Test
+    @DisplayName("Update with no Student in DB")
+    void updateEmptyDB() {
+        assertThatThrownBy(() -> studentService.update(student)).isInstanceOf(IllegalActionException.class);
+    }
+
 }

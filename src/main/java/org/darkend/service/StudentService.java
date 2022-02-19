@@ -39,6 +39,10 @@ public class StudentService {
     }
 
     public Student update(Student student) {
-        return entityManager.merge(student);
+        try {
+            return entityManager.merge(student);
+        } catch (DatabaseException e) {
+            throw new IllegalActionException("No such Student to update");
+        }
     }
 }
