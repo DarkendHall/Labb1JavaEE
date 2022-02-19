@@ -37,4 +37,8 @@ public class StudentService {
             throw new EntityNotFoundException("Couldn't find a student with that Id");
         }
     }
+
+    public Student update(Student student) {
+        return entityManager.merge(student);
+    }
 }

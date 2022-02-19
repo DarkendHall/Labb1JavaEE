@@ -52,4 +52,17 @@ class StudentServiceTest {
         assertThatThrownBy(() -> studentService.add(student)).isInstanceOf(IllegalActionException.class);
     }
 
+    @Test
+    @DisplayName("Update should update Student in DB")
+    void update() {
+        studentService.add(student);
+
+        student.setLastName("Leemann");
+
+        var result = studentService.update(student);
+        var result1 = studentService.get(1);
+
+        assertThat(result).isEqualTo(result1);
+    }
+
 }
