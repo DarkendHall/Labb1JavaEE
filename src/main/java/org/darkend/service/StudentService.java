@@ -47,8 +47,12 @@ public class StudentService {
     }
 
     public Student remove(Student student) {
-        entityManager.remove(student);
+        try {
+            entityManager.remove(student);
 
-        return student;
+            return student;
+        } catch (DatabaseException e) {
+            throw new IllegalActionException("No such Student to remove");
+        }
     }
 }

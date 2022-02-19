@@ -82,4 +82,10 @@ class StudentServiceTest {
 
         assertThatThrownBy(() -> studentService.get(1)).isInstanceOf(EntityNotFoundException.class);
     }
+
+    @Test
+    @DisplayName("Remove on empty DB")
+    void removeEmptyDB() {
+        assertThatThrownBy(() -> studentService.remove(student)).isInstanceOf(IllegalActionException.class);
+    }
 }
