@@ -45,4 +45,10 @@ public class StudentService {
             throw new IllegalActionException("No such Student to update");
         }
     }
+
+    public Student remove(Student student) {
+        entityManager.remove(student);
+
+        return student;
+    }
 }

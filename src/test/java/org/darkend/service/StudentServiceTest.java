@@ -71,4 +71,15 @@ class StudentServiceTest {
         assertThatThrownBy(() -> studentService.update(student)).isInstanceOf(IllegalActionException.class);
     }
 
+    @Test
+    @DisplayName("Remove should remove Student in DB")
+    void remove() {
+        studentService.add(student);
+
+        var result = studentService.remove(student);
+
+        assertThat(result).isEqualTo(student);
+
+        assertThatThrownBy(() -> studentService.get(1)).isInstanceOf(EntityNotFoundException.class);
+    }
 }
