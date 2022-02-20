@@ -1,12 +1,13 @@
 package org.darkend.service;
 
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.PersistenceContext;
 import org.darkend.entity.Student;
 import org.darkend.exception.IllegalActionException;
 import org.eclipse.persistence.exceptions.DatabaseException;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.PersistenceContext;
 
 public class StudentService {
 
