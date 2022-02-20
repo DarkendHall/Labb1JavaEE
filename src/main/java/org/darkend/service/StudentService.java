@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 public class StudentService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "labb1")
     EntityManager entityManager;
 
     public StudentService() {
