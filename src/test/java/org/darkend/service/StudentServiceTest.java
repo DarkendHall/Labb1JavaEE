@@ -140,4 +140,27 @@ class StudentServiceTest {
 
         assertThat(result).containsExactly(student, student2);
     }
+
+    @Test
+    @DisplayName("GetAll should return all students in DB with matching last name")
+    void getAllQuery() {
+
+        String lastName = "test";
+
+        Student student2 = new Student("test", "testersson", "test@test.test").setId(2L);
+
+        TypedQuery<Student> tq = mock(TypedQuery.class);
+        List<Student> students = new ArrayList<>();
+        students.add(student2);
+
+
+        when(tq.setParameter("lastName", lastName)).thenReturn(tq);
+        when(tq.getResultList()).thenReturn(students);
+        when(entityManager.createQuery("SELECT s FROM Student s WHERE s.lastName LIKE :lastName",
+                Student.class)).thenReturn(tq);
+
+        var result = studentService.getAll(lastName);
+
+        assertThat(result).containsExactly(student2);
+    }
 }

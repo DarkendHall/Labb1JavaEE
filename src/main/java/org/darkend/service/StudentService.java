@@ -98,4 +98,10 @@ public class StudentService {
         return entityManager.createQuery("SELECT s FROM Student s", Student.class)
                 .getResultList();
     }
+
+    public List<Student> getAll(String lastName) {
+        return entityManager.createQuery("SELECT s FROM Student s WHERE s.lastName LIKE :lastName", Student.class)
+                .setParameter("lastName", lastName)
+                .getResultList();
+    }
 }
