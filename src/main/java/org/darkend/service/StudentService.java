@@ -76,4 +76,14 @@ public class StudentService {
             throw new IllegalActionException("No such Student to remove");
         }
     }
+
+    public Student remove(Long id) {
+        try {
+            Student studentToRemove = get(id);
+            remove(studentToRemove);
+            return studentToRemove;
+        } catch (EntityNotFoundException e) {
+            throw new IllegalActionException("No such Student to remove");
+        }
+    }
 }

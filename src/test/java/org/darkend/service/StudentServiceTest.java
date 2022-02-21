@@ -102,4 +102,15 @@ class StudentServiceTest {
 
         assertThat(result).isEqualTo(student.setPhoneNumber("0716548530"));
     }
+
+    @Test
+    @DisplayName("Remove with ID")
+    void removeWithID() {
+        studentService.add(student);
+
+        var result = studentService.remove(1L);
+
+        assertThat(result).isEqualTo(student);
+        assertThatThrownBy(() -> studentService.get(1));
+    }
 }
