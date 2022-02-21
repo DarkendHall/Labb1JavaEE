@@ -34,12 +34,8 @@ public class StudentService {
         throw new IllegalActionException("Student is already in the database");
     }
 
-    public Student get(long Id) {
-        try {
-            return entityManager.find(Student.class, Id);
-        } catch (DatabaseException e) {
-            throw new EntityNotFoundException("Couldn't find a student with that Id");
-        }
+    public Student get(long id) {
+        return find(id).orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID: " + id));
     }
 
     public Optional<Student> find(long id) {
