@@ -50,7 +50,7 @@ public class StudentService {
         try {
             return entityManager.merge(student);
         } catch (DatabaseException e) {
-            throw new IllegalActionException("No such Student to update");
+            throw new IllegalActionException("No Student to update with ID: " + student.getId());
         }
     }
 
@@ -78,7 +78,7 @@ public class StudentService {
 
             return student;
         } catch (DatabaseException e) {
-            throw new IllegalActionException("No such Student to remove");
+            throw new IllegalActionException("No Student to update with ID: " + student.getId());
         }
     }
 
@@ -88,7 +88,7 @@ public class StudentService {
             remove(studentToRemove);
             return studentToRemove;
         } catch (EntityNotFoundException e) {
-            throw new IllegalActionException("No such Student to remove");
+            throw new IllegalActionException("No Student to remove with ID: " + id);
         }
     }
 }
