@@ -5,6 +5,7 @@ import org.darkend.service.StudentService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
@@ -57,6 +58,15 @@ public class StudentRest {
         studentService.patch(id, student);
 
         return Response.accepted(student)
+                .build();
+    }
+
+    @Path("{id}")
+    @DELETE
+    public Response removeStudent(@PathParam("id") Long id) {
+        Student studentToRemove = studentService.remove(id);
+
+        return Response.accepted(studentToRemove)
                 .build();
     }
 }
