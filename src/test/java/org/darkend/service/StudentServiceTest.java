@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.TypedQuery;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -116,5 +119,25 @@ class StudentServiceTest {
         doThrow(new EntityNotFoundException()).when(entityManager)
                 .find(Student.class, 1L);
         assertThatThrownBy(() -> studentService.get(1));
+    }
+
+    @Test
+    @DisplayName("GetAll should return all students in DB")
+    void getAll() {
+
+        Student student2 = new Student("test", "testersson", "test@test.test").setId(2L);
+
+        TypedQuery<Student> tq = mock(TypedQuery.class);
+        List<Student> students = new ArrayList<>();
+        students.add(student);
+        students.add(student2);
+
+
+        when(tq.getResultList()).thenReturn(students);
+        when(entityManager.createQuery("SELECT s FROM Student s", Student.class)).thenReturn(tq);
+
+        var result = studentService.getAll();
+
+        assertThat(result).containsExactly(student, student2);
     }
 }

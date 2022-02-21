@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -91,5 +92,10 @@ public class StudentService {
         } catch (EntityNotFoundException e) {
             throw new IllegalActionException("No Student to remove with ID: " + id);
         }
+    }
+
+    public List<Student> getAll() {
+        return entityManager.createQuery("SELECT s FROM Student s", Student.class)
+                .getResultList();
     }
 }
