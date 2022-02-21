@@ -7,32 +7,32 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.Persistence;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class StudentServiceTest {
 
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
-    EntityManager entityManager = entityManagerFactory.createEntityManager();
+    EntityManager entityManager;
 
     StudentService studentService;
     Student student;
 
     @BeforeEach
     private void setup() {
+        entityManager = mock(EntityManager.class);
         studentService = new StudentService(entityManager);
-        student = new Student("Marcus", "Leeman", "test@email.com");
+        student = new Student("Marcus", "Leeman", "test@email.com").setId(1L);
     }
 
     @Test
     @DisplayName("Add should add")
     void add() {
-
         var result = studentService.add(student);
 
+        doReturn(student).when(entityManager)
+                .find(Student.class, 1L);
         var result1 = studentService.get(1);
 
         assertThat(result).isEqualTo(student);
@@ -48,18 +48,19 @@ class StudentServiceTest {
     @Test
     @DisplayName("Add with duplicate student")
     void addDuplicate() {
-        studentService.add(student);
-
+        doReturn(student).when(entityManager)
+                .find(Student.class, 1L);
         assertThatThrownBy(() -> studentService.add(student)).isInstanceOf(IllegalActionException.class);
     }
 
     @Test
     @DisplayName("Update should update Student in DB")
     void update() {
-        studentService.add(student);
-
         student.setLastName("Leemann");
-
+        doReturn(student).when(entityManager)
+                .merge(student);
+        doReturn(student).when(entityManager)
+                .find(Student.class, 1L);
         var result = studentService.update(student);
         var result1 = studentService.get(1);
 
@@ -75,11 +76,13 @@ class StudentServiceTest {
     @Test
     @DisplayName("Remove should remove Student in DB")
     void remove() {
-        studentService.add(student);
-
+        doReturn(student).when(entityManager)
+                .find(Student.class, 1L);
         var result = studentService.remove(student);
 
         assertThat(result).isEqualTo(student);
+        doThrow(new EntityNotFoundException()).when(entityManager)
+                .find(Student.class, 1L);
 
         assertThatThrownBy(() -> studentService.get(1)).isInstanceOf(EntityNotFoundException.class);
     }
@@ -93,11 +96,10 @@ class StudentServiceTest {
     @Test
     @DisplayName("Patch should update part of student")
     void patch() {
-
-        studentService.add(student);
-
         Student student2 = new Student().setPhoneNumber("0716548530");
 
+        doReturn(student).when(entityManager)
+                .find(Student.class, 1L);
         var result = studentService.patch(1L, student2);
 
         assertThat(result).isEqualTo(student.setPhoneNumber("0716548530"));
@@ -106,11 +108,13 @@ class StudentServiceTest {
     @Test
     @DisplayName("Remove with ID")
     void removeWithID() {
-        studentService.add(student);
-
+        doReturn(student).when(entityManager)
+                .find(Student.class, 1L);
         var result = studentService.remove(1L);
 
         assertThat(result).isEqualTo(student);
+        doThrow(new EntityNotFoundException()).when(entityManager)
+                .find(Student.class, 1L);
         assertThatThrownBy(() -> studentService.get(1));
     }
 }

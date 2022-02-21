@@ -31,7 +31,7 @@ public class StudentService {
             entityManager.persist(student);
             return student;
         }
-        throw new IllegalActionException("Student with ID: " + student.getId() + " already exists in the DB");
+        throw new IllegalActionException("Student already exists in the DB with ID: " + student.getId());
     }
 
     public Student get(long id) {
@@ -48,10 +48,11 @@ public class StudentService {
 
     public Student update(Student student) {
         try {
-            return entityManager.merge(student);
-        } catch (DatabaseException e) {
+            get(student.getId());
+        } catch (EntityNotFoundException e) {
             throw new IllegalActionException("No Student to update with ID: " + student.getId());
         }
+        return entityManager.merge(student);
     }
 
     public Student patch(Long id, Student student) {
@@ -74,12 +75,12 @@ public class StudentService {
 
     public Student remove(Student student) {
         try {
-            entityManager.remove(student);
-
-            return student;
-        } catch (DatabaseException e) {
+            get(student.getId());
+        } catch (EntityNotFoundException e) {
             throw new IllegalActionException("No Student to update with ID: " + student.getId());
         }
+        entityManager.remove(student);
+        return student;
     }
 
     public Student remove(Long id) {
