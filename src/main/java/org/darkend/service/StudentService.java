@@ -50,7 +50,7 @@ public class StudentService {
     public Student update(Student student) {
         try {
             get(student.getId());
-        } catch (EntityNotFoundException e) {
+        } catch (EntityNotFoundException | NullPointerException e) {
             throw new IllegalActionException("No Student to update with ID: " + student.getId());
         }
         return entityManager.merge(student);
