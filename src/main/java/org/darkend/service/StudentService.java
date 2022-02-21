@@ -31,7 +31,7 @@ public class StudentService {
             entityManager.persist(student);
             return student;
         }
-        throw new IllegalActionException("Student is already in the database");
+        throw new IllegalActionException("Student with ID: " + student.getId() + " already exists in the DB");
     }
 
     public Student get(long id) {
