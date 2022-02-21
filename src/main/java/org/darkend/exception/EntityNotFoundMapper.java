@@ -1,6 +1,7 @@
 package org.darkend.exception;
 
 import javax.persistence.EntityNotFoundException;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -11,6 +12,8 @@ public class EntityNotFoundMapper implements ExceptionMapper<EntityNotFoundExcep
     @Override
     public Response toResponse(EntityNotFoundException e) {
         return Response.status(404, "Not Found")
+                .entity(e.getMessage())
+                .type(MediaType.APPLICATION_JSON_TYPE)
                 .build();
     }
 }
