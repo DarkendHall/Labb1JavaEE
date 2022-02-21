@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Transactional
 public class StudentService {
@@ -38,6 +39,14 @@ public class StudentService {
             return entityManager.find(Student.class, Id);
         } catch (DatabaseException e) {
             throw new EntityNotFoundException("Couldn't find a student with that Id");
+        }
+    }
+
+    public Optional<Student> find(long id) {
+        try {
+            return Optional.ofNullable(entityManager.find(Student.class, id));
+        } catch (DatabaseException e) {
+            return Optional.empty();
         }
     }
 
