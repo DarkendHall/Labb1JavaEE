@@ -1,0 +1,245 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-02-21T21:13:10.646Z",
+  "__export_source": "insomnia.desktop.app:v2021.7.2",
+  "resources": [
+    {
+      "_id": "req_3c81acd669fb4667aea2f83d639f59de",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645476849642,
+      "created": 1645476253156,
+      "url": "localhost:8080/labb1/students/",
+      "name": "Update Student",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"test@email.com\",\n\t\"firstName\": \"Marcus\",\n\t\"id\": 1,\n\t\"lastName\": \"Leeman\",\n\t\"phoneNumber\": \"0706050403\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0eee94ee2c0c4337afe1a82accac1d47"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1645476253156,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "parentId": null,
+      "modified": 1645434268021,
+      "created": 1645434268021,
+      "name": "Labb1 - JavaEE",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_ede1da7e2b82448ea6d7f49d53414213",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645452465767,
+      "created": 1645452450170,
+      "url": "localhost:8080/labb1/students/",
+      "name": "Get All Students",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645452450170,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_44723f469a254af6bd9e3a3be1f312ac",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645475737669,
+      "created": 1645452436002,
+      "url": "localhost:8080/labb1/students/query",
+      "name": "Get Student Query",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_05c2ec82539e4b56bcd287febc330f00",
+          "name": "lastName",
+          "value": "Leeman",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645452436002,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_5344a8fe2bc34992996520c1ff295fa8",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645447742131,
+      "created": 1645447728677,
+      "url": "localhost:8080/labb1/students/1",
+      "name": "Remove Student",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645447728677,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f35dfb40d576443dadd21381322fd9e3",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645476851302,
+      "created": 1645436720211,
+      "url": "localhost:8080/labb1/students/1",
+      "name": "Patch Student",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"phoneNumber\": \"0715436544\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_f9e9fa6bca624935a49b31cf2effd613"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1645436720211,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_42251076ed414cbca8f6e5d5b1b8b8cd",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645447199969,
+      "created": 1645435326257,
+      "url": "localhost:8080/labb1/students/1",
+      "name": "Get Student",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645435326257,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_83f05a4775814eb280cda5ab21ff9408",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645476852001,
+      "created": 1645434282741,
+      "url": "localhost:8080/labb1/students/",
+      "name": "Add Student",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"firstName\": \"Marcus\",\n\t\"lastName\": \"Leeman\",\n\t\"email\": \"test@email.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5810f8a77ea74f77b28aa8e068181c09"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1645434282741,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_4dbc79480fb01af8adb74d076ba4c298e059a1fc",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645434268029,
+      "created": 1645434268029,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1645434268029,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_4dbc79480fb01af8adb74d076ba4c298e059a1fc",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645434268031,
+      "created": 1645434268031,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_deb64ec500974d46ae4ed1339ccba6c4",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645434268024,
+      "created": 1645434268024,
+      "fileName": "Labb1 - JavaEE",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    }
+  ]
+}
