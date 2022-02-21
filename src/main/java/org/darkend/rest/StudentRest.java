@@ -71,4 +71,11 @@ public class StudentRest {
         return Response.accepted(studentToRemove)
                 .build();
     }
+
+    @Path("")
+    @GET
+    public Response getAllStudents() {
+        return Response.ok(studentService.getAll())
+                .build();
+    }
 }
