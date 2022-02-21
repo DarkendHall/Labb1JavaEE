@@ -4,7 +4,6 @@ import org.darkend.entity.Student;
 import org.darkend.service.StudentService;
 
 import javax.inject.Inject;
-import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
@@ -46,11 +45,7 @@ public class StudentRest {
     @Path("{id}")
     @GET
     public Response getStudent(@PathParam("id") Long id) {
-
         Student foundStudent = studentService.get(id);
-
-        if (foundStudent == null)
-            throw new EntityNotFoundException("Couldn't find entity in database");
         return Response.ok(foundStudent)
                 .build();
     }
