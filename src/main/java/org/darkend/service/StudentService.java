@@ -8,7 +8,9 @@ import org.eclipse.persistence.exceptions.DatabaseException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
+@Transactional
 public class StudentService {
 
     @PersistenceContext(unitName = "labb1")
