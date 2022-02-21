@@ -49,6 +49,24 @@ public class StudentService {
         }
     }
 
+    public Student patch(Long id, Student student) {
+
+        Student studentToPatch = get(id);
+
+        if (student.getId() != null)
+            studentToPatch.setId(student.getId());
+        if (student.getFirstName() != null)
+            studentToPatch.setFirstName(student.getFirstName());
+        if (student.getLastName() != null)
+            studentToPatch.setLastName(student.getLastName());
+        if (student.getPhoneNumber() != null)
+            studentToPatch.setPhoneNumber(student.getPhoneNumber());
+        if (student.getEmail() != null)
+            studentToPatch.setEmail(student.getEmail());
+
+        return studentToPatch;
+    }
+
     public Student remove(Student student) {
         try {
             entityManager.remove(student);

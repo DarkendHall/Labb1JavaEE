@@ -89,4 +89,17 @@ class StudentServiceTest {
     void removeEmptyDB() {
         assertThatThrownBy(() -> studentService.remove(student)).isInstanceOf(IllegalActionException.class);
     }
+
+    @Test
+    @DisplayName("Patch should update part of student")
+    void patch() {
+
+        studentService.add(student);
+
+        Student student2 = new Student().setPhoneNumber("0716548530");
+
+        var result = studentService.patch(1L, student2);
+
+        assertThat(result).isEqualTo(student.setPhoneNumber("0716548530"));
+    }
 }
