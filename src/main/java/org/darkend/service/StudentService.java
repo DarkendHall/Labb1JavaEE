@@ -26,7 +26,7 @@ public class StudentService {
     public Student add(Student student) {
         try {
             get(student.getId());
-        } catch (EntityNotFoundException e) {
+        } catch (EntityNotFoundException | NullPointerException e) {
             entityManager.persist(student);
             return student;
         }
