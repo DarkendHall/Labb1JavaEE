@@ -3,7 +3,6 @@ package org.darkend.service;
 
 import org.darkend.entity.Student;
 import org.darkend.exception.IllegalActionException;
-import org.eclipse.persistence.exceptions.DatabaseException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
@@ -37,16 +36,8 @@ public class StudentService {
     }
 
     public Student get(long id) {
-        return find(id).orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID:" + id));
-
-    }
-
-    public Optional<Student> find(long id) {
-        try {
-            return Optional.ofNullable(entityManager.find(Student.class, id));
-        } catch (DatabaseException e) {
-            return Optional.empty();
-        }
+        return Optional.ofNullable(entityManager.find(Student.class, id))
+                .orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID:" + id));
     }
 
     public Student update(Student student) {
