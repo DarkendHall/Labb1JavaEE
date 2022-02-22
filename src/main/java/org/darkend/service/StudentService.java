@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.ws.rs.BadRequestException;
 import java.util.List;
 import java.util.Optional;
 
@@ -119,8 +120,8 @@ public class StudentService {
     }
 
     private void validateStudent(Student student) {
-        if (validateStudentId(student) &&
-                student.getFirstName() == null &&
+        validStudentId(student);
+        if (student.getFirstName() == null &&
                 student.getLastName() == null &&
                 student.getPhoneNumber() == null &&
                 student.getEmail() == null)
@@ -128,7 +129,8 @@ public class StudentService {
             throw new BadRequestException("Provided Student has no valid data");
     }
 
-    private boolean validateStudentId(Student student) {
-        return student.getId() != null;
+    private void validStudentId(Student student) {
+        if (student.getId() == null)
+            throw new BadRequestException("Provided Student has no valid ID");
     }
 }
