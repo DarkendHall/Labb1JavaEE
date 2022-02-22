@@ -38,6 +38,7 @@ public class StudentService {
 
     public Student get(long id) {
         return find(id).orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID:" + id));
+
     }
 
     public Optional<Student> find(long id) {
@@ -63,7 +64,6 @@ public class StudentService {
         Student studentToPatch = get(id);
 
         validateStudent(student);
-
         if (student.getId() != null)
             studentToPatch.setId(student.getId());
         if (student.getFirstName() != null)
