@@ -37,7 +37,6 @@ public class StudentRest {
     @Path("")
     @POST
     public Response addStudent(Student student) {
-
         studentService.add(student);
 
         return Response.created(URI.create("/students/" + student.getId()))
@@ -48,7 +47,6 @@ public class StudentRest {
     @Path("{id}")
     @GET
     public Response getStudent(@PathParam("id") Long id) {
-
         Student foundStudent = studentService.get(id);
 
         return Response.ok(foundStudent)
@@ -58,7 +56,6 @@ public class StudentRest {
     @Path("{id}")
     @PATCH
     public Response updateStudent(@PathParam("id") Long id, Student student) {
-
         Student patchedStudent = studentService.patch(id, student);
 
         return Response.accepted(patchedStudent)
@@ -68,7 +65,6 @@ public class StudentRest {
     @Path("")
     @PUT
     public Response updateStudent(Student student) {
-
         studentService.update(student);
 
         return Response.accepted(student)

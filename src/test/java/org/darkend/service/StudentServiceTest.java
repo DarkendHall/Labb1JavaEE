@@ -36,7 +36,7 @@ class StudentServiceTest {
 
         doReturn(student).when(entityManager)
                 .find(Student.class, 1L);
-        var result1 = studentService.get(1);
+        var result1 = studentService.get(1L);
 
         assertThat(result).isEqualTo(student);
         assertThat(result1).isEqualTo(student);
@@ -45,7 +45,7 @@ class StudentServiceTest {
     @Test
     @DisplayName("Get should throw EntityNotFoundException")
     void get() {
-        assertThatThrownBy(() -> studentService.get(1)).isInstanceOf(EntityNotFoundException.class);
+        assertThatThrownBy(() -> studentService.get(1L)).isInstanceOf(EntityNotFoundException.class);
     }
 
     @Test
@@ -65,7 +65,7 @@ class StudentServiceTest {
         doReturn(student).when(entityManager)
                 .find(Student.class, 1L);
         var result = studentService.update(student);
-        var result1 = studentService.get(1);
+        var result1 = studentService.get(1L);
 
         assertThat(result).isEqualTo(result1);
     }
@@ -87,7 +87,7 @@ class StudentServiceTest {
         doThrow(new EntityNotFoundException()).when(entityManager)
                 .find(Student.class, 1L);
 
-        assertThatThrownBy(() -> studentService.get(1)).isInstanceOf(EntityNotFoundException.class);
+        assertThatThrownBy(() -> studentService.get(1L)).isInstanceOf(EntityNotFoundException.class);
     }
 
     @Test
@@ -118,7 +118,7 @@ class StudentServiceTest {
         assertThat(result).isEqualTo(student);
         doThrow(new EntityNotFoundException()).when(entityManager)
                 .find(Student.class, 1L);
-        assertThatThrownBy(() -> studentService.get(1));
+        assertThatThrownBy(() -> studentService.get(1L));
     }
 
     @Test

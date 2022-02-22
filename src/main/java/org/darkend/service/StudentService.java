@@ -35,7 +35,7 @@ public class StudentService {
         throw new IllegalActionException("Student already exists in the DB with ID:" + student.getId());
     }
 
-    public Student get(long id) {
+    public Student get(Long id) {
         return Optional.ofNullable(entityManager.find(Student.class, id))
                 .orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID:" + id));
     }
