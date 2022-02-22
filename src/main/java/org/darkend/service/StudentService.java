@@ -97,14 +97,25 @@ public class StudentService {
     }
 
     public List<Student> getAll() {
-        return entityManager.createQuery("SELECT s FROM Student s", Student.class)
+        var students = entityManager.createQuery("SELECT s FROM Student s", Student.class)
                 .getResultList();
+
+        if (students.size() == 0)
+            throw new EntityNotFoundException("No Students in the DB");
+
+        return students;
     }
 
     public List<Student> getAll(String lastName) {
-        return entityManager.createQuery("SELECT s FROM Student s WHERE s.lastName LIKE :lastName", Student.class)
+        var students = entityManager.createQuery("SELECT s FROM Student s WHERE s.lastName LIKE :lastName",
+                        Student.class)
                 .setParameter("lastName", lastName)
                 .getResultList();
+
+        if (students.size() == 0)
+            throw new EntityNotFoundException("No Students matches query parameter:" + lastName);
+
+        return students;
     }
 
     private void validateStudent(Student student) {
