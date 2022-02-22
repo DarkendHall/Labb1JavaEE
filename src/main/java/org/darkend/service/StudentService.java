@@ -60,6 +60,8 @@ public class StudentService {
 
         Student studentToPatch = get(id);
 
+        validateStudent(student);
+
         if (student.getId() != null)
             studentToPatch.setId(student.getId());
         if (student.getFirstName() != null)
