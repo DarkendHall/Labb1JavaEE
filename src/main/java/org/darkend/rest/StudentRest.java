@@ -88,7 +88,7 @@ public class StudentRest {
     public Response removeStudent(@PathParam("id") Long id) {
         Student studentToRemove = studentService.remove(id);
 
-        return Response.accepted(studentToRemove)
+        return Response.ok(studentToRemove)
                 .build();
     }
 
