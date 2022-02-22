@@ -49,6 +49,7 @@ public class StudentService {
     }
 
     public Student update(Student student) {
+        validStudentId(student);
         try {
             get(student.getId());
         } catch (EntityNotFoundException | NullPointerException e) {
