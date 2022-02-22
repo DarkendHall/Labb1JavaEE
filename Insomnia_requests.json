@@ -1,13 +1,207 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2022-02-21T21:13:10.646Z",
+  "__export_date": "2022-02-22T12:37:13.722Z",
   "__export_source": "insomnia.desktop.app:v2021.7.2",
   "resources": [
     {
+      "_id": "req_1c271c90363b437bacfc5a052a26e96f",
+      "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
+      "modified": 1645532202092,
+      "created": 1645526911619,
+      "url": "localhost:8080/labb1/students/",
+      "name": "Exception on Update Student",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"test@email.com\",\n\t\"firstName\": \"Marcus\",\n\t\"lastName\": \"Leeman\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0eee94ee2c0c4337afe1a82accac1d47"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1645526733098,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645526719444,
+      "created": 1645526719444,
+      "name": "Exceptions",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1645526719444,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "parentId": null,
+      "modified": 1645434268021,
+      "created": 1645434268021,
+      "name": "Labb1 - JavaEE",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_a6960aa049064a8bb4a48130e3b56432",
+      "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
+      "modified": 1645530240822,
+      "created": 1645526813808,
+      "url": "localhost:8080/labb1/students/query",
+      "name": "Exception on Get Query",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_05c2ec82539e4b56bcd287febc330f00",
+          "name": "lastName",
+          "value": "jkhlgfshjklfdgashjkl",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645526733094.875,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d420ec1177954548ba3907dad3136fdd",
+      "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
+      "modified": 1645530239219,
+      "created": 1645526830224,
+      "url": "localhost:8080/labb1/students/1000",
+      "name": "Exception on Remove Student",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645526733091.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d6cc300bb3fa40c587fc647bd07a53c9",
+      "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
+      "modified": 1645532211978,
+      "created": 1645526733198,
+      "url": "localhost:8080/labb1/students/1",
+      "name": "Exception on Patch Student",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"id\": \"abc\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_484b6ee602f048a283064f8da96e4682"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1645526733085.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_090ea2f0aa324cc6a0e4aa55e7f79e1c",
+      "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
+      "modified": 1645530232752,
+      "created": 1645527159419,
+      "url": "localhost:8080/labb1/students/1000",
+      "name": "Exception on Get Student",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645526733073,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_82adf6d81e6b4df5868816e3d8784b03",
+      "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
+      "modified": 1645532216843,
+      "created": 1645526837057,
+      "url": "localhost:8080/labb1/students/",
+      "name": "Exception on Add Student",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"firstName\": \"Marcus\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5810f8a77ea74f77b28aa8e068181c09"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1645526733048,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
       "_id": "req_3c81acd669fb4667aea2f83d639f59de",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645476849642,
+      "modified": 1645532220988,
       "created": 1645476253156,
       "url": "localhost:8080/labb1/students/",
       "name": "Update Student",
@@ -35,16 +229,6 @@
       "settingRebuildPath": true,
       "settingFollowRedirects": "global",
       "_type": "request"
-    },
-    {
-      "_id": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "parentId": null,
-      "modified": 1645434268021,
-      "created": 1645434268021,
-      "name": "Labb1 - JavaEE",
-      "description": "",
-      "scope": "collection",
-      "_type": "workspace"
     },
     {
       "_id": "req_ede1da7e2b82448ea6d7f49d53414213",
@@ -125,7 +309,7 @@
     {
       "_id": "req_f35dfb40d576443dadd21381322fd9e3",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645476851302,
+      "modified": 1645532229564,
       "created": 1645436720211,
       "url": "localhost:8080/labb1/students/1",
       "name": "Patch Student",
@@ -157,7 +341,7 @@
     {
       "_id": "req_42251076ed414cbca8f6e5d5b1b8b8cd",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645447199969,
+      "modified": 1645527146594,
       "created": 1645435326257,
       "url": "localhost:8080/labb1/students/1",
       "name": "Get Student",
@@ -180,7 +364,7 @@
     {
       "_id": "req_83f05a4775814eb280cda5ab21ff9408",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645476852001,
+      "modified": 1645532233367,
       "created": 1645434282741,
       "url": "localhost:8080/labb1/students/",
       "name": "Add Student",
