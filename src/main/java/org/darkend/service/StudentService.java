@@ -111,7 +111,7 @@ public class StudentService {
     public List<Student> getAll(String lastName) {
         var students = entityManager.createQuery("SELECT s FROM Student s WHERE s.lastName LIKE :lastName",
                         Student.class)
-                .setParameter("lastName", lastName)
+                .setParameter("lastName", "%" + lastName + "%")
                 .getResultList();
 
         if (students.size() == 0)
