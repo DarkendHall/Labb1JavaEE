@@ -4,6 +4,9 @@ import org.darkend.entity.Student;
 import org.darkend.service.StudentService;
 
 import javax.inject.Inject;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,6 +20,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
+import java.util.Set;
 
 @Path("students")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,6 +30,9 @@ public class StudentRest {
 
     @Inject
     StudentService studentService;
+
+    @Inject
+    Validator validator;
 
     public StudentRest() {
     }
@@ -37,6 +44,10 @@ public class StudentRest {
     @Path("")
     @POST
     public Response addStudent(Student student) {
+        Set<ConstraintViolation<Student>> violations = validator.validate(student);
+
+        if (violations.size() > 0)
+            throw new BadRequestException("Provided Student is not a valid Student");
 
         studentService.add(student);
 
