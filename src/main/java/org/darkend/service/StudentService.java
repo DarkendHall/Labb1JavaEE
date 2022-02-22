@@ -50,7 +50,7 @@ public class StudentService {
     }
 
     public Student update(Student student) {
-        validStudentId(student);
+        validateStudentId(student);
         try {
             get(student.getId());
         } catch (EntityNotFoundException | NullPointerException e) {
@@ -130,7 +130,7 @@ public class StudentService {
             throw new BadRequestException("Provided Student has no valid data");
     }
 
-    private void validStudentId(Student student) {
+    private void validateStudentId(Student student) {
         if (student.getId() == null)
             throw new BadRequestException("Provided Student has no valid ID");
     }
