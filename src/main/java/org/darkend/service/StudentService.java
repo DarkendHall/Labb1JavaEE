@@ -104,4 +104,18 @@ public class StudentService {
                 .setParameter("lastName", lastName)
                 .getResultList();
     }
+
+    private void validateStudent(Student student) {
+        if (validateStudentId(student) &&
+                student.getFirstName() == null &&
+                student.getLastName() == null &&
+                student.getPhoneNumber() == null &&
+                student.getEmail() == null)
+
+            throw new BadRequestException("Provided Student has no valid data");
+    }
+
+    private boolean validateStudentId(Student student) {
+        return student.getId() != null;
+    }
 }
