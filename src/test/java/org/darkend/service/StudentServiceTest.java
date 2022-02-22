@@ -154,7 +154,7 @@ class StudentServiceTest {
         students.add(student2);
 
 
-        when(tq.setParameter("lastName", lastName)).thenReturn(tq);
+        when(tq.setParameter("lastName", "%" + lastName + "%")).thenReturn(tq);
         when(tq.getResultList()).thenReturn(students);
         when(entityManager.createQuery("SELECT s FROM Student s WHERE s.lastName LIKE :lastName",
                 Student.class)).thenReturn(tq);
