@@ -32,11 +32,11 @@ public class StudentService {
             entityManager.persist(student);
             return student;
         }
-        throw new IllegalActionException("Student already exists in the DB with ID: " + student.getId());
+        throw new IllegalActionException("Student already exists in the DB with ID:" + student.getId());
     }
 
     public Student get(long id) {
-        return find(id).orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID: " + id));
+        return find(id).orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID:" + id));
     }
 
     public Optional<Student> find(long id) {
@@ -51,7 +51,7 @@ public class StudentService {
         try {
             get(student.getId());
         } catch (EntityNotFoundException | NullPointerException e) {
-            throw new IllegalActionException("No Student to update with ID: " + student.getId());
+            throw new IllegalActionException("No Student to update with ID:" + student.getId());
         }
         return entityManager.merge(student);
     }
@@ -80,7 +80,7 @@ public class StudentService {
         try {
             get(student.getId());
         } catch (EntityNotFoundException e) {
-            throw new IllegalActionException("No Student to update with ID: " + student.getId());
+            throw new IllegalActionException("No Student to update with ID:" + student.getId());
         }
         entityManager.remove(student);
         return student;
@@ -92,7 +92,7 @@ public class StudentService {
             remove(studentToRemove);
             return studentToRemove;
         } catch (EntityNotFoundException e) {
-            throw new IllegalActionException("No Student to remove with ID: " + id);
+            throw new IllegalActionException("No Student to remove with ID:" + id);
         }
     }
 
