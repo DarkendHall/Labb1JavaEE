@@ -73,7 +73,7 @@ class StudentServiceTest {
     @Test
     @DisplayName("Update with no Student in DB")
     void updateEmptyDB() {
-        assertThatThrownBy(() -> studentService.update(student)).isInstanceOf(IllegalActionException.class);
+        assertThatThrownBy(() -> studentService.update(student)).isInstanceOf(EntityNotFoundException.class);
     }
 
     @Test
@@ -93,7 +93,7 @@ class StudentServiceTest {
     @Test
     @DisplayName("Remove on empty DB")
     void removeEmptyDB() {
-        assertThatThrownBy(() -> studentService.remove(student)).isInstanceOf(IllegalActionException.class);
+        assertThatThrownBy(() -> studentService.remove(student)).isInstanceOf(EntityNotFoundException.class);
     }
 
     @Test

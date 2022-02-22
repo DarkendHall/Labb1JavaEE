@@ -44,8 +44,8 @@ public class StudentService {
         validateStudentId(student);
         try {
             get(student.getId());
-        } catch (EntityNotFoundException | NullPointerException e) {
-            throw new IllegalActionException("No Student to update with ID:" + student.getId());
+        } catch (NullPointerException e) {
+            throw new EntityNotFoundException("No Student to update with ID:" + student.getId());
         }
         return entityManager.merge(student);
     }
@@ -70,23 +70,15 @@ public class StudentService {
     }
 
     public Student remove(Student student) {
-        try {
-            get(student.getId());
-        } catch (EntityNotFoundException e) {
-            throw new IllegalActionException("No Student to update with ID:" + student.getId());
-        }
+        get(student.getId());
         entityManager.remove(student);
         return student;
     }
 
     public Student remove(Long id) {
-        try {
-            Student studentToRemove = get(id);
-            remove(studentToRemove);
-            return studentToRemove;
-        } catch (EntityNotFoundException e) {
-            throw new IllegalActionException("No Student to remove with ID:" + id);
-        }
+        Student studentToRemove = get(id);
+        remove(studentToRemove);
+        return studentToRemove;
     }
 
     public List<Student> getAll() {
