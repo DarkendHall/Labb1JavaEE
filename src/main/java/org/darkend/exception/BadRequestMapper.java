@@ -8,11 +8,11 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class BadRequestMapper implements ExceptionMapper<BadRequestException> {
+
     @Override
     public Response toResponse(BadRequestException e) {
         return Response.status(Response.Status.BAD_REQUEST)
-                .entity(e.getMessage()
-                        .replace(" ", "_"))
+                .entity(new ExceptionJson(Response.Status.BAD_REQUEST.getStatusCode(), e.getMessage()))
                 .type(MediaType.APPLICATION_JSON_TYPE)
                 .build();
     }
