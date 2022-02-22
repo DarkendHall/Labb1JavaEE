@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.ws.rs.BadRequestException;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,11 +33,12 @@ public class StudentService {
             entityManager.persist(student);
             return student;
         }
-        throw new IllegalActionException("Student already exists in the DB with ID: " + student.getId());
+        throw new IllegalActionException("Student already exists in the DB with ID:" + student.getId());
     }
 
     public Student get(long id) {
-        return find(id).orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID: " + id));
+        return find(id).orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID:" + id));
+
     }
 
     public Optional<Student> find(long id) {
@@ -48,10 +50,11 @@ public class StudentService {
     }
 
     public Student update(Student student) {
+        validStudentId(student);
         try {
             get(student.getId());
         } catch (EntityNotFoundException | NullPointerException e) {
-            throw new IllegalActionException("No Student to update with ID: " + student.getId());
+            throw new IllegalActionException("No Student to update with ID:" + student.getId());
         }
         return entityManager.merge(student);
     }
@@ -60,6 +63,7 @@ public class StudentService {
 
         Student studentToPatch = get(id);
 
+        validateStudent(student);
         if (student.getId() != null)
             studentToPatch.setId(student.getId());
         if (student.getFirstName() != null)
@@ -78,7 +82,7 @@ public class StudentService {
         try {
             get(student.getId());
         } catch (EntityNotFoundException e) {
-            throw new IllegalActionException("No Student to update with ID: " + student.getId());
+            throw new IllegalActionException("No Student to update with ID:" + student.getId());
         }
         entityManager.remove(student);
         return student;
@@ -90,18 +94,44 @@ public class StudentService {
             remove(studentToRemove);
             return studentToRemove;
         } catch (EntityNotFoundException e) {
-            throw new IllegalActionException("No Student to remove with ID: " + id);
+            throw new IllegalActionException("No Student to remove with ID:" + id);
         }
     }
 
     public List<Student> getAll() {
-        return entityManager.createQuery("SELECT s FROM Student s", Student.class)
+        var students = entityManager.createQuery("SELECT s FROM Student s", Student.class)
                 .getResultList();
+
+        if (students.size() == 0)
+            throw new EntityNotFoundException("No Students in the DB");
+
+        return students;
     }
 
     public List<Student> getAll(String lastName) {
-        return entityManager.createQuery("SELECT s FROM Student s WHERE s.lastName LIKE :lastName", Student.class)
+        var students = entityManager.createQuery("SELECT s FROM Student s WHERE s.lastName LIKE :lastName",
+                        Student.class)
                 .setParameter("lastName", lastName)
                 .getResultList();
+
+        if (students.size() == 0)
+            throw new EntityNotFoundException("No Students matches query parameter:" + lastName);
+
+        return students;
+    }
+
+    private void validateStudent(Student student) {
+        validStudentId(student);
+        if (student.getFirstName() == null &&
+                student.getLastName() == null &&
+                student.getPhoneNumber() == null &&
+                student.getEmail() == null)
+
+            throw new BadRequestException("Provided Student has no valid data");
+    }
+
+    private void validStudentId(Student student) {
+        if (student.getId() == null)
+            throw new BadRequestException("Provided Student has no valid ID");
     }
 }
