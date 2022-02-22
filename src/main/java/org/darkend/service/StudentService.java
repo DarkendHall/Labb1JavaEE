@@ -121,8 +121,8 @@ public class StudentService {
     }
 
     private void validateStudent(Student student) {
-        validStudentId(student);
-        if (student.getFirstName() == null &&
+        if (student.getId() == null &&
+                student.getFirstName() == null &&
                 student.getLastName() == null &&
                 student.getPhoneNumber() == null &&
                 student.getEmail() == null)
