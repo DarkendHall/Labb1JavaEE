@@ -1,32 +1,32 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2022-02-22T12:37:13.722Z",
+  "__export_date": "2022-02-23T11:14:50.556Z",
   "__export_source": "insomnia.desktop.app:v2021.7.2",
   "resources": [
     {
-      "_id": "req_1c271c90363b437bacfc5a052a26e96f",
+      "_id": "req_0805b6c2774f48f5bb11233a3e2540a1",
       "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
-      "modified": 1645532202092,
-      "created": 1645526911619,
-      "url": "localhost:8080/labb1/students/",
-      "name": "Exception on Update Student",
+      "modified": 1645614733933,
+      "created": 1645610403888,
+      "url": "localhost:8080/labb1/students/1",
+      "name": "Exception on Update Student 2",
       "description": "",
       "method": "PUT",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"test@email.com\",\n\t\"firstName\": \"Marcus\",\n\t\"lastName\": \"Leeman\"\n}"
+        "text": "{\n\t\"email\": \"test@email.com\",\n\t\"firstName\": \"Marcus\",\n\t\"id\": 1,\n\t\"phoneNumber\": \"0706050403\"\n}"
       },
       "parameters": [],
       "headers": [
         {
           "name": "Content-Type",
           "value": "application/json",
-          "id": "pair_0eee94ee2c0c4337afe1a82accac1d47"
+          "id": "pair_d82fd86684674fa2a426e931d5118fcd"
         }
       ],
       "authentication": {},
-      "metaSortKey": -1645526733098,
+      "metaSortKey": -1645610403888,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -57,6 +57,38 @@
       "description": "",
       "scope": "collection",
       "_type": "workspace"
+    },
+    {
+      "_id": "req_1c271c90363b437bacfc5a052a26e96f",
+      "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
+      "modified": 1645614734406,
+      "created": 1645526911619,
+      "url": "localhost:8080/labb1/students/1000",
+      "name": "Exception on Update Student",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"test@email.com\",\n\t\"firstName\": \"Marcus\",\n\t\"lastName\": \"Leeman\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0eee94ee2c0c4337afe1a82accac1d47"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1645526733098,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
     },
     {
       "_id": "req_a6960aa049064a8bb4a48130e3b56432",
@@ -114,7 +146,7 @@
     {
       "_id": "req_d6cc300bb3fa40c587fc647bd07a53c9",
       "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
-      "modified": 1645532211978,
+      "modified": 1645614735922,
       "created": 1645526733198,
       "url": "localhost:8080/labb1/students/1",
       "name": "Exception on Patch Student",
@@ -169,7 +201,7 @@
     {
       "_id": "req_82adf6d81e6b4df5868816e3d8784b03",
       "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
-      "modified": 1645532216843,
+      "modified": 1645614736834,
       "created": 1645526837057,
       "url": "localhost:8080/labb1/students/",
       "name": "Exception on Add Student",
@@ -199,28 +231,26 @@
       "_type": "request"
     },
     {
-      "_id": "req_3c81acd669fb4667aea2f83d639f59de",
+      "_id": "req_44723f469a254af6bd9e3a3be1f312ac",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645532220988,
-      "created": 1645476253156,
-      "url": "localhost:8080/labb1/students/",
-      "name": "Update Student",
+      "modified": 1645540006533,
+      "created": 1645452436002,
+      "url": "localhost:8080/labb1/students/query",
+      "name": "Get Student Query",
       "description": "",
-      "method": "PUT",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"test@email.com\",\n\t\"firstName\": \"Marcus\",\n\t\"id\": 1,\n\t\"lastName\": \"Leeman\",\n\t\"phoneNumber\": \"0706050403\"\n}"
-      },
-      "parameters": [],
-      "headers": [
+      "method": "GET",
+      "body": {},
+      "parameters": [
         {
-          "name": "Content-Type",
-          "value": "application/json",
-          "id": "pair_0eee94ee2c0c4337afe1a82accac1d47"
+          "id": "pair_05c2ec82539e4b56bcd287febc330f00",
+          "name": "lastName",
+          "value": "man",
+          "description": ""
         }
       ],
+      "headers": [],
       "authentication": {},
-      "metaSortKey": -1645476253156,
+      "metaSortKey": -1645489584807,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -254,36 +284,6 @@
       "_type": "request"
     },
     {
-      "_id": "req_44723f469a254af6bd9e3a3be1f312ac",
-      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645475737669,
-      "created": 1645452436002,
-      "url": "localhost:8080/labb1/students/query",
-      "name": "Get Student Query",
-      "description": "",
-      "method": "GET",
-      "body": {},
-      "parameters": [
-        {
-          "id": "pair_05c2ec82539e4b56bcd287febc330f00",
-          "name": "lastName",
-          "value": "Leeman",
-          "description": ""
-        }
-      ],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1645452436002,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
-      "_type": "request"
-    },
-    {
       "_id": "req_5344a8fe2bc34992996520c1ff295fa8",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
       "modified": 1645447742131,
@@ -307,9 +307,41 @@
       "_type": "request"
     },
     {
+      "_id": "req_3c81acd669fb4667aea2f83d639f59de",
+      "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
+      "modified": 1645614765585,
+      "created": 1645476253156,
+      "url": "localhost:8080/labb1/students/1",
+      "name": "Update Student",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"test@email.com\",\n\t\"firstName\": \"Marcus\",\n\t\"id\": 1,\n\t\"lastName\": \"Leeman\",\n\t\"phoneNumber\": \"0706050403\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0eee94ee2c0c4337afe1a82accac1d47"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1645442224444,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
       "_id": "req_f35dfb40d576443dadd21381322fd9e3",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645532229564,
+      "modified": 1645614766090,
       "created": 1645436720211,
       "url": "localhost:8080/labb1/students/1",
       "name": "Patch Student",
@@ -364,7 +396,7 @@
     {
       "_id": "req_83f05a4775814eb280cda5ab21ff9408",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645532233367,
+      "modified": 1645614846335,
       "created": 1645434282741,
       "url": "localhost:8080/labb1/students/",
       "name": "Add Student",
