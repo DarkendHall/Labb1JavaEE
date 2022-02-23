@@ -1,7 +1,6 @@
 package org.darkend.service;
 
 import org.darkend.entity.Student;
-import org.darkend.exception.IllegalActionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,14 +45,6 @@ class StudentServiceTest {
     @DisplayName("Get should throw EntityNotFoundException")
     void get() {
         assertThatThrownBy(() -> studentService.get(1L)).isInstanceOf(EntityNotFoundException.class);
-    }
-
-    @Test
-    @DisplayName("Add with duplicate student")
-    void addDuplicate() {
-        doReturn(student).when(entityManager)
-                .find(Student.class, 1L);
-        assertThatThrownBy(() -> studentService.add(student)).isInstanceOf(IllegalActionException.class);
     }
 
     @Test
