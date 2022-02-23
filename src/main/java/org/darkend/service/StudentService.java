@@ -115,9 +115,4 @@ public class StudentService {
 
             throw new BadRequestException("Provided Student has no valid data");
     }
-
-    private void validateStudentId(Student student) {
-        if (student.getId() == null)
-            throw new BadRequestException("Provided Student has no valid ID");
-    }
 }
