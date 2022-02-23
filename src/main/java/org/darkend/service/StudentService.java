@@ -27,8 +27,8 @@ public class StudentService {
     }
 
     public Student add(Student student) {
-            entityManager.persist(student);
-            return student;
+        entityManager.persist(student);
+        return student;
     }
 
     public Student get(Long id) {
