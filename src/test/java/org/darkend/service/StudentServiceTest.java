@@ -64,7 +64,7 @@ class StudentServiceTest {
                 .merge(student);
         doReturn(student).when(entityManager)
                 .find(Student.class, 1L);
-        var result = studentService.update(student);
+        var result = studentService.update(1L, student);
         var result1 = studentService.get(1L);
 
         assertThat(result).isEqualTo(result1);
@@ -73,7 +73,7 @@ class StudentServiceTest {
     @Test
     @DisplayName("Update with no Student in DB")
     void updateEmptyDB() {
-        assertThatThrownBy(() -> studentService.update(student)).isInstanceOf(EntityNotFoundException.class);
+        assertThatThrownBy(() -> studentService.update(1L, student)).isInstanceOf(EntityNotFoundException.class);
     }
 
     @Test

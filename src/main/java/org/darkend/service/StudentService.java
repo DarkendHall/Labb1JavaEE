@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.ws.rs.BadRequestException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Transactional
@@ -40,9 +41,11 @@ public class StudentService {
                 .orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID:" + id));
     }
 
-    public Student update(Student student) {
-        validateStudentId(student);
+    public Student update(Long id, Student student) {
         try {
+            if (!Objects.equals(id, student.getId())) {
+                throw new IllegalActionException("Provided Student IDs does not match");
+            }
             get(student.getId());
         } catch (NullPointerException e) {
             throw new EntityNotFoundException("No Student to update with ID:" + student.getId());
