@@ -67,7 +67,7 @@ public class StudentRest {
 
     @Path("{id}")
     @PATCH
-    public Response updateStudent(@PathParam("id") Long id, Student student) {
+    public Response patchStudent(@PathParam("id") Long id, Student student) {
         Student patchedStudent = studentService.patch(id, student);
 
         return Response.accepted(patchedStudent)
