@@ -49,12 +49,9 @@ public class StudentService {
     }
 
     public Student patch(Long id, Student student) {
-
         Student studentToPatch = get(id);
 
         validateStudent(student);
-        if (student.getId() != null)
-            studentToPatch.setId(student.getId());
         if (student.getFirstName() != null)
             studentToPatch.setFirstName(student.getFirstName());
         if (student.getLastName() != null)
