@@ -33,17 +33,17 @@ public class StudentService {
 
     public Student get(Long id) {
         return Optional.ofNullable(entityManager.find(Student.class, id))
-                .orElseThrow(() -> new EntityNotFoundException("No Student in DB with ID:" + id));
+                .orElseThrow(() -> new EntityNotFoundException("No student in DB with ID: " + id));
     }
 
     public Student update(Long id, Student student) {
         try {
             if (!Objects.equals(id, student.getId())) {
-                throw new IllegalActionException("Provided Student IDs does not match");
+                throw new IllegalActionException("Provided student IDs does not match");
             }
             get(student.getId());
         } catch (NullPointerException e) {
-            throw new EntityNotFoundException("No Student to update with ID:" + student.getId());
+            throw new EntityNotFoundException("No student in DB to update with ID: " + student.getId());
         }
         return entityManager.merge(student);
     }
@@ -84,7 +84,7 @@ public class StudentService {
                 .getResultList();
 
         if (students.size() == 0)
-            throw new EntityNotFoundException("No Students in the DB");
+            throw new EntityNotFoundException("No students in the DB");
 
         return students;
     }
@@ -96,7 +96,7 @@ public class StudentService {
                 .getResultList();
 
         if (students.size() == 0)
-            throw new EntityNotFoundException("No Students matches query parameter:" + lastName);
+            throw new EntityNotFoundException("No students matched query parameter: " + lastName);
 
         return students;
     }
@@ -108,6 +108,6 @@ public class StudentService {
                 student.getPhoneNumber() == null &&
                 student.getEmail() == null)
 
-            throw new BadRequestException("Provided Student has no valid data");
+            throw new BadRequestException("Provided student has no valid data");
     }
 }

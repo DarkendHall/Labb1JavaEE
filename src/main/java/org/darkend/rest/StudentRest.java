@@ -47,7 +47,7 @@ public class StudentRest {
         Set<ConstraintViolation<Student>> violations = validator.validate(student);
 
         if (violations.size() > 0)
-            throw new BadRequestException("Provided Student is not a valid Student");
+            throw new BadRequestException("Provided student is not valid");
 
         studentService.add(student);
 
@@ -80,7 +80,7 @@ public class StudentRest {
         Set<ConstraintViolation<Student>> violations = validator.validate(student);
 
         if (violations.size() > 0)
-            throw new BadRequestException("Provided Student is not a valid Student");
+            throw new BadRequestException("Provided student is not valid");
 
         studentService.update(id, student);
 
