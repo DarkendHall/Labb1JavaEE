@@ -10,8 +10,8 @@ public class IllegalActionMapper implements ExceptionMapper<IllegalActionExcepti
 
     @Override
     public Response toResponse(IllegalActionException e) {
-        return Response.status(Response.Status.FORBIDDEN)
-                .entity(new ExceptionJson(Response.Status.FORBIDDEN.getStatusCode(), e.getMessage()))
+        return Response.status(Response.Status.NOT_FOUND)
+                .entity(new ExceptionJson(Response.Status.NOT_FOUND.getStatusCode(), e.getMessage()))
                 .type(MediaType.APPLICATION_JSON_TYPE)
                 .build();
     }
