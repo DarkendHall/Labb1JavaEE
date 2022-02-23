@@ -27,13 +27,8 @@ public class StudentService {
     }
 
     public Student add(Student student) {
-        try {
-            get(student.getId());
-        } catch (EntityNotFoundException | NullPointerException e) {
             entityManager.persist(student);
             return student;
-        }
-        throw new IllegalActionException("Student already exists in the DB with ID:" + student.getId());
     }
 
     public Student get(Long id) {
