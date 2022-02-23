@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 
 public class ExceptionJson {
 
-    LocalDateTime localDateTime;
-    int errorCode;
-    String errorMsg;
+    private LocalDateTime localDateTime;
+    private int errorCode;
+    private String errorMsg;
 
     public ExceptionJson setErrorCode(int errorCode) {
         this.errorCode = errorCode;
