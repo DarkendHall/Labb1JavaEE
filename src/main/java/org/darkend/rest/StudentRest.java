@@ -51,7 +51,7 @@ public class StudentRest {
 
         studentService.add(student);
 
-        return Response.created(URI.create("/students/" + student.getId()))
+        return Response.created(URI.create("/labb1/students/" + student.getId()))
                 .entity(student)
                 .build();
     }
