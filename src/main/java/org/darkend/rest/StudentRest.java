@@ -74,11 +74,15 @@ public class StudentRest {
                 .build();
     }
 
-    @Path("")
+    @Path("{id}")
     @PUT
-    public Response updateStudent(Student student) {
+    public Response updateStudent(@PathParam("id") Long id, Student student) {
+        Set<ConstraintViolation<Student>> violations = validator.validate(student);
 
-        studentService.update(student);
+        if (violations.size() > 0)
+            throw new BadRequestException("Provided Student is not a valid Student");
+
+        studentService.update(id, student);
 
         return Response.accepted(student)
                 .build();
