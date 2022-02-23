@@ -34,13 +34,6 @@ public class StudentRest {
     @Inject
     Validator validator;
 
-    public StudentRest() {
-    }
-
-    public StudentRest(StudentService studentService) {
-        this.studentService = studentService;
-    }
-
     @Path("")
     @POST
     public Response addStudent(Student student) {
@@ -70,7 +63,7 @@ public class StudentRest {
     public Response patchStudent(@PathParam("id") Long id, Student student) {
         Student patchedStudent = studentService.patch(id, student);
 
-        return Response.accepted(patchedStudent)
+        return Response.ok(patchedStudent)
                 .build();
     }
 
@@ -84,7 +77,7 @@ public class StudentRest {
 
         studentService.update(id, student);
 
-        return Response.accepted(student)
+        return Response.ok(student)
                 .build();
     }
 
