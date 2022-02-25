@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.TypedQuery;
+import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import static org.mockito.Mockito.*;
 class StudentServiceTest {
 
     EntityManager entityManager;
+    Validator validator;
 
     StudentService studentService;
     Student student;
@@ -24,7 +26,8 @@ class StudentServiceTest {
     @BeforeEach
     private void setup() {
         entityManager = mock(EntityManager.class);
-        studentService = new StudentService(entityManager);
+        validator = mock(Validator.class);
+        studentService = new StudentService(entityManager, validator);
         student = new Student("Marcus", "Leeman", "test@email.com").setId(1L);
     }
 

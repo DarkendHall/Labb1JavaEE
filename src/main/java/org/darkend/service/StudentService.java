@@ -4,29 +4,41 @@ package org.darkend.service;
 import org.darkend.entity.Student;
 import org.darkend.exception.IllegalActionException;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import javax.ws.rs.BadRequestException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 @Transactional
 public class StudentService {
 
     @PersistenceContext(unitName = "labb1")
-    EntityManager entityManager;
+    private EntityManager entityManager;
+
+    @Inject
+    private Validator validator;
 
     public StudentService() {
     }
 
-    public StudentService(EntityManager entityManager) {
+    public StudentService(EntityManager entityManager, Validator validator) {
         this.entityManager = entityManager;
+        this.validator = validator;
     }
 
     public Student add(Student student) {
+        Set<ConstraintViolation<Student>> violations = validator.validate(student);
+        if (violations.size() > 0)
+
+            throw new BadRequestException("Provided student is not valid");
         entityManager.persist(student);
         return student;
     }
@@ -37,6 +49,10 @@ public class StudentService {
     }
 
     public Student update(Long id, Student student) {
+        Set<ConstraintViolation<Student>> violations = validator.validate(student);
+
+        if (violations.size() > 0)
+            throw new BadRequestException("Provided student is not valid");
         try {
             if (!Objects.equals(id, student.getId())) {
                 throw new IllegalActionException("Provided student IDs does not match");
@@ -98,5 +114,12 @@ public class StudentService {
                 student.getEmail() == null)
 
             throw new BadRequestException("Provided student has no valid data");
+    }
+
+    private void validateStudent(Student student) {
+        Set<ConstraintViolation<Student>> violations = validator.validate(student);
+
+        if (violations.size() > 0)
+            throw new BadRequestException("Provided student is not valid");
     }
 }
