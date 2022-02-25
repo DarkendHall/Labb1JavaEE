@@ -18,7 +18,7 @@ This is the GitHub repository for Laboration 1 in the course "Java Enterprise".
 
 /labb1/students/{id}    (getStudent(@PathParam("id") Long id), GET)
 
-/labb1/students/{id}    (updateStudent(@PathParam("id") Long id, Student student), PATCH)
+/labb1/students/{id}    (patchStudent(@PathParam("id") Long id, Student student), PATCH)
 
 /labb1/students/{id}    (updateStudent(@PathParam("id") Long id, Student student), PUT)
 
