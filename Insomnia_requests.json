@@ -1,13 +1,13 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2022-02-23T11:14:50.556Z",
+  "__export_date": "2022-02-25T09:09:08.602Z",
   "__export_source": "insomnia.desktop.app:v2021.7.2",
   "resources": [
     {
       "_id": "req_0805b6c2774f48f5bb11233a3e2540a1",
       "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
-      "modified": 1645614733933,
+      "modified": 1645780105184,
       "created": 1645610403888,
       "url": "localhost:8080/labb1/students/1",
       "name": "Exception on Update Student 2",
@@ -61,7 +61,7 @@
     {
       "_id": "req_1c271c90363b437bacfc5a052a26e96f",
       "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
-      "modified": 1645614734406,
+      "modified": 1645780106861,
       "created": 1645526911619,
       "url": "localhost:8080/labb1/students/1000",
       "name": "Exception on Update Student",
@@ -81,36 +81,6 @@
       ],
       "authentication": {},
       "metaSortKey": -1645526733098,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
-      "_type": "request"
-    },
-    {
-      "_id": "req_a6960aa049064a8bb4a48130e3b56432",
-      "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
-      "modified": 1645530240822,
-      "created": 1645526813808,
-      "url": "localhost:8080/labb1/students/query",
-      "name": "Exception on Get Query",
-      "description": "",
-      "method": "GET",
-      "body": {},
-      "parameters": [
-        {
-          "id": "pair_05c2ec82539e4b56bcd287febc330f00",
-          "name": "lastName",
-          "value": "jkhlgfshjklfdgashjkl",
-          "description": ""
-        }
-      ],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1645526733094.875,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -146,7 +116,7 @@
     {
       "_id": "req_d6cc300bb3fa40c587fc647bd07a53c9",
       "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
-      "modified": 1645614735922,
+      "modified": 1645780109572,
       "created": 1645526733198,
       "url": "localhost:8080/labb1/students/1",
       "name": "Exception on Patch Student",
@@ -201,7 +171,7 @@
     {
       "_id": "req_82adf6d81e6b4df5868816e3d8784b03",
       "parentId": "fld_b2d671e8a66b46d5b39ca6435a80b0ee",
-      "modified": 1645614736834,
+      "modified": 1645780110411,
       "created": 1645526837057,
       "url": "localhost:8080/labb1/students/",
       "name": "Exception on Add Student",
@@ -233,7 +203,7 @@
     {
       "_id": "req_44723f469a254af6bd9e3a3be1f312ac",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645540006533,
+      "modified": 1645778264844,
       "created": 1645452436002,
       "url": "localhost:8080/labb1/students/query",
       "name": "Get Student Query",
@@ -309,7 +279,7 @@
     {
       "_id": "req_3c81acd669fb4667aea2f83d639f59de",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645614765585,
+      "modified": 1645780130252,
       "created": 1645476253156,
       "url": "localhost:8080/labb1/students/1",
       "name": "Update Student",
@@ -341,7 +311,7 @@
     {
       "_id": "req_f35dfb40d576443dadd21381322fd9e3",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645614766090,
+      "modified": 1645780126714,
       "created": 1645436720211,
       "url": "localhost:8080/labb1/students/1",
       "name": "Patch Student",
@@ -396,7 +366,7 @@
     {
       "_id": "req_83f05a4775814eb280cda5ab21ff9408",
       "parentId": "wrk_1614e6f4f32142f78a82290fbaf62434",
-      "modified": 1645614846335,
+      "modified": 1645780112136,
       "created": 1645434282741,
       "url": "localhost:8080/labb1/students/",
       "name": "Add Student",
