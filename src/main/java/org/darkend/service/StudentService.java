@@ -51,7 +51,7 @@ public class StudentService {
     public Student patch(Long id, Student student) {
         Student studentToPatch = get(id);
 
-        validateStudent(student);
+        validStudent(student);
         if (student.getFirstName() != null)
             studentToPatch.setFirstName(student.getFirstName());
         if (student.getLastName() != null)
@@ -90,7 +90,7 @@ public class StudentService {
                 .getResultList();
     }
 
-    private void validateStudent(Student student) {
+    private void validStudent(Student student) {
         if (student.getId() == null &&
                 student.getFirstName() == null &&
                 student.getLastName() == null &&
